@@ -1,0 +1,17 @@
+@import 'background';
+
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'starwar';
+  src: url('/Starjedi.ttf')
+}
+
+body {
+  font-family: 'starwar';
+  color: white;
+}
