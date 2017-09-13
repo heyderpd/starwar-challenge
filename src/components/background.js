@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import sky from '../images/sky.jpg'
 import zoom from '../images/zoom.jpg'

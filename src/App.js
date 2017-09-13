@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+
 import './stylesheets/style.css'
+import Background from './components/background'
+import PlanetCard from './components/planet-card'
 
-import Background from './components/background';
-
-        // <Background />
+import { getPages, getPlanets } from './commons/api'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <PlanetCard />
         <Background />
-        <p>Star War</p>
       </div>
     );
   }
 }
 
-export default App;
+export default App
