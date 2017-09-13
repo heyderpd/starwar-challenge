@@ -7,7 +7,7 @@ const PlanetCard = () => (
     <p>Star War</p>
     <p>Nome: abc</p>
     <p>Tamanho: 123</p>
-    <Button/>
+    <Button disabled={true}/>
   </div>
 )
 
