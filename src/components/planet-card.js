@@ -3,7 +3,12 @@ import React from 'react'
 import Loading from './loading'
 import Button from './button'
 
-const PlanetCard = ({ isInitialize, isLoading }) => {
+const PlanetCard = ({
+  isInitialize,
+  isLoading,
+  getPlanet
+}) => {
+
   if (isInitialize) {
     return (<Loading big={true} />)
   }
@@ -25,7 +30,7 @@ const PlanetCard = ({ isInitialize, isLoading }) => {
         <span>1, 2, 3</span>
       </div>
 
-      <Button disabled={isLoading}>
+      <Button disabled={isLoading} onClick={getPlanet}>
         next
       </Button>
     </div>

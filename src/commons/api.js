@@ -19,4 +19,4 @@ const get = async url => {
 
 export const getPages = async () => get(planets)
 
-export const getPlanets = async id => get(`${planets}${id}/`)
+export const getPlanet = async id => get(`${planets}${id}/`)
