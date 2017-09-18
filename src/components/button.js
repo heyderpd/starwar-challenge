@@ -3,12 +3,14 @@ import classNames from 'classnames'
 
 import Loading from './loading'
 
-const Button = props => (
+const Button = ({ disabled, children }) => (
   <button
-    className={classNames('nextPlanet', props.disabled && '--disabled')}
-    disabled={!!props.disabled}
+    className={classNames('nextPlanet', disabled && '--disabled')}
+    disabled={!!disabled}
   >
-    <Loading/>
+    { disabled
+      ? (<Loading/>)
+      : children }
   </button>
 )
 

@@ -7,9 +7,26 @@
   }
 }
 
-img.loading {
+svg.loading {
+  opacity: 1;
+  fill-opacity: 1;
+  stroke: none;
+  stroke-width: 3;
+  stroke-miterlimit: 4;
+  stroke-dasharray: none;
+  stroke-dashoffset: 1.8;
+  stroke-opacity: 1;
+  // display: inline;
+
   width: 35px;
   height: 35px;
-  transform: rotate(15deg);
   animation: spin 5s linear infinite;
+
+  fill: black;
+}
+
+svg.loading.big {
+  width: 100px;
+  height: 100px;
+  fill: white;
 }
