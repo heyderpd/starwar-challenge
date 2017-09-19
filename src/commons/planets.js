@@ -24,7 +24,6 @@ export const setPlanets = ({ count, results }) => {
 
 export const randomPlanet = async ({ count, list }) => {
   const id = Math.min(count, Math.floor(Math.random() *count +1))
-  console.log([id,id])
   const planet = list[id]
   if (planet) {
     return {

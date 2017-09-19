@@ -20,15 +20,19 @@ line, circle {
 
 line {
   stroke-width: 2;
-  stroke-dashoffset: -400;
   stroke-dasharray: 400;
-  animation: warp 3s;
+  animation: none;
+  animation: '';
+}
+
+.normal line {
+  stroke-dashoffset: -400;
+  animation: warp 1s 1;
 }
 
 .warp line {
   stroke-dashoffset: 0;
-  animation: warp 2s;
-  animation-direction: reverse;
+  animation: warp-reverse 1s 1;
 }
 
 @keyframes warp {
@@ -37,5 +41,14 @@ line {
   }
   100% {
     stroke-dashoffset: -400;
+  }
+}
+
+@keyframes warp-reverse {
+  0% {
+    stroke-dashoffset: -400;
+  }
+  100% {
+    stroke-dashoffset: 0;
   }
 }

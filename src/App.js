@@ -9,7 +9,6 @@ import { setPlanets, randomPlanet } from './commons/planets'
 
 class App extends Component {
   state = {
-    warp: false,
     isInitialize: true,
     isLoading: false,
     hasError: false,
@@ -27,29 +26,20 @@ class App extends Component {
 
   async randomPlanet () {
     this.setState({ isLoading: true })
-    this.warpToPlanet()
+
     this.setState({
-      isLoading: false,
       planets: {
         count: this.state.planets.count,
         list: await randomPlanet(this.state.planets)
-      }
+      },
+      isLoading: false,
     })
   }
 
-  warpToPlanet () {
-    if (!this.state.warp) {
-      this.setState({ warp: true })
-      setTimeout(() => this.setState({ warp: false }), 5000)
-    }
-  }
-
   render() {
-    console.log('--state', this.state)
-
     return (
       <div className="App">
-        <Background warp={this.state.warp} />
+        <Background warp={this.state.isLoading} />
         <PlanetCard {...this.state} getPlanet={this.randomPlanet.bind(this)} />
       </div>
     );
