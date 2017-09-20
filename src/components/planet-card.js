@@ -4,30 +4,40 @@ import Loading from './loading'
 import Button from './button'
 
 const PlanetCard = ({
-  isInitialize,
+  initializing,
   isLoading,
-  getPlanet
+  getPlanet,
+  planets
 }) => {
 
-  if (isInitialize) {
+  if (initializing) {
     return (<Loading big={true} />)
   }
+
+  const { selectedCard } = planets
+  console.log(planets, selectedCard)
+  const {
+    name,
+    population,
+    climate,
+    terrain
+  } = selectedCard
 
   return (
     <div className="planetCard">
       <div>
-        <span>Nome:</span>
-        <span>Planeta</span>
+        <span>name:</span>
+        <span>{name}</span>
       </div>
 
       <div>
-        <span>Clima:</span>
-        <span>Frio</span>
+        <span>population:</span>
+        <span>{population}</span>
       </div>
 
       <div>
-        <span>Filme:</span>
-        <span>1, 2, 3</span>
+        <span>terrain:</span>
+        <span>{terrain}</span>
       </div>
 
       <Button disabled={isLoading} onClick={getPlanet}>

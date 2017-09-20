@@ -9,7 +9,7 @@ import { setPlanets, randomPlanet } from './commons/planets'
 
 class App extends Component {
   state = {
-    isInitialize: true,
+    initializing: true,
     isLoading: false,
     hasError: false,
   }
@@ -21,16 +21,25 @@ class App extends Component {
     } else {
       this.setState({ hasError: true })
     }
-    this.setState({ isInitialize: false })
+    this.setState({ initializing: false })
   }
 
   async randomPlanet () {
     this.setState({ isLoading: true })
 
+    const { newPlanet, id, selectedCard } = await randomPlanet(this.state.planets)
+    const list = newPlanet
+      ? {
+          ...this.state.planets.list,
+          [id]: selectedCard
+        }
+      : this.state.planets.list
+
     this.setState({
       planets: {
-        count: this.state.planets.count,
-        list: await randomPlanet(this.state.planets)
+        ...this.state.planets,
+        list,
+        selectedCard
       },
       isLoading: false,
     })

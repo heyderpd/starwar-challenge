@@ -1,5 +1,18 @@
 import { getPlanet } from './api'
 
+let lastId = null
+
+const randomValue = limit => Math.min(limit, Math.floor(Math.random() *limit +1))
+
+const randomId = limit => {
+  let id = randomValue(limit)
+  if (lastId === id) {
+    id = randomValue(limit)
+  }
+  lastId = id
+  return id
+}
+
 const getPlanetId = ({ url }) => {
   const [ all, id ] = /^.+?(\d+)\/?$/.exec(String(url))
   return id
@@ -16,25 +29,29 @@ const formatAllPlanets = results => {
 }
 
 export const setPlanets = ({ count, results }) => {
+  const planets = formatAllPlanets(results)
+  const initialCount = Object.keys(planets).length
+  const id = randomId(initialCount)
+
   return {
     count,
-    list: formatAllPlanets(results)
+    list: planets,
+    selectedCard: planets[id]
   }
 }
 
 export const randomPlanet = async ({ count, list }) => {
-  const id = Math.min(count, Math.floor(Math.random() *count +1))
-  const planet = list[id]
-  if (planet) {
-    return {
-      ...list,
-      [id]: planet
-    }
+  const id = randomId(count)
+  const selectedCard = list[id]
+  if (selectedCard) {
+    return { selectedCard }
+
   } else {
     const { response } = await getPlanet(id)
     return {
-      ...list,
-      [id]: response
+      newPlanet: true,
+      id,
+      selectedCard: response
     }
   }
 }
