@@ -3,6 +3,8 @@ import React from 'react'
 import Loading from './loading'
 import Button from './button'
 
+import { toScale } from '../commons/utils'
+
 const PlanetCard = ({
   initializing,
   isLoading,
@@ -17,7 +19,8 @@ const PlanetCard = ({
     name,
     population,
     climate,
-    terrain
+    terrain,
+    filmsList
   } = planets.selectedCard
 
   return (
@@ -29,7 +32,7 @@ const PlanetCard = ({
       <div className="planetCard-info">
         <div>
           <span>population:</span>
-          <span>{population}</span>
+          <span>{toScale(population)}</span>
         </div>
 
         <div>
@@ -41,6 +44,11 @@ const PlanetCard = ({
           <span>terrain:</span>
           <span>{terrain}</span>
         </div>
+
+        {filmsList && <div>
+          <span>films:</span>
+          <span>{filmsList}</span>
+        </div>}
       </div>
 
       <Button disabled={isLoading} onClick={getPlanet}>

@@ -1,4 +1,5 @@
 import { getPlanet } from './api'
+import { getIdFromUrl } from './utils'
 
 let lastId = null
 
@@ -13,12 +14,16 @@ const randomId = limit => {
   return id
 }
 
-const getPlanetId = ({ url }) => {
-  const [ all, id ] = /^.+?(\d+)\/?$/.exec(String(url))
-  return id
-}
+const getPlanetId = ({ url }) => getIdFromUrl(url)
 
-const formatPlanet = planet => ({ [getPlanetId(planet)]: planet })
+const getFilmsList = ({ films }) => films.map(url => getIdFromUrl(url))
+
+const formatPlanet = planet => ({
+  [getPlanetId(planet)]: {
+    ...planet,
+    filmsList: getFilmsList(planet)
+  }
+})
 
 const formatAllPlanets = results => {
   return results
