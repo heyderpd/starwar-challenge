@@ -13,15 +13,12 @@ const PlanetCard = ({
   if (initializing) {
     return (<Loading big={true} />)
   }
-
-  const { selectedCard } = planets
-  console.log(planets, selectedCard)
   const {
     name,
     population,
     climate,
     terrain
-  } = selectedCard
+  } = planets.selectedCard
 
   return (
     <div className="planetCard">
