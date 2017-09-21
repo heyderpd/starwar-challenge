@@ -12,9 +12,13 @@ svg#warpSky {
   z-index: -9;
 }
 
-line, circle {
+line {
   stroke-width: 1;
   stroke: white;
+  fill: white;
+}
+
+circle {
   fill: white;
 }
 

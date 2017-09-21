@@ -3,7 +3,8 @@
   src: url('/Starjedi.ttf')
 }
 
-body {
+body, .font {
   font-family: 'starwar';
   color: white;
+  font-size: 16px;
 }

@@ -25,19 +25,25 @@ const PlanetCard = ({
 
   return (
     <div className="planetCard">
-      <div>
-        <span>name:</span>
-        <span>{name}</span>
+      <div className="planetCard-title">
+        {name}
       </div>
 
-      <div>
-        <span>population:</span>
-        <span>{population}</span>
-      </div>
+      <div className="planetCard-info">
+        <div>
+          <span>population:</span>
+          <span>{population}</span>
+        </div>
 
-      <div>
-        <span>terrain:</span>
-        <span>{terrain}</span>
+        <div>
+          <span>climate:</span>
+          <span>{climate}</span>
+        </div>
+
+        <div>
+          <span>terrain:</span>
+          <span>{terrain}</span>
+        </div>
       </div>
 
       <Button disabled={isLoading} onClick={getPlanet}>

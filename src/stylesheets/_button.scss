@@ -1,16 +1,16 @@
 .nextPlanet {
-  min-height: 40px;
-  max-height: 60px;
-  min-width: 140px;
-  max-width: 160px;
-  width: 33%;
-  height: 33%;
+  width: 40%;
+  height: 15%;
   display: block;
   margin: auto;
-
-  background-color: #343436;
+  border-radius: 5px;
+  background-color: #448a44;
+  box-sizing: border-box;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .nextPlanet.--disabled {
-  background-color: red;
+  background-color: #172f17;
+  cursor: progress;
 }
