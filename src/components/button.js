@@ -4,32 +4,14 @@ import classNames from 'classnames'
 import Loading from './loading'
 
 class Button extends Component {
-  state = {
-    disabled: false
-  }
-
-  onClick () {
-    if (!this.state.disabled) {
-      this.setState({
-        disabled: true
-      })
-      setTimeout(() => {
-        this.setState({
-          disabled: false
-        })
-      }, 1500)
-      this.props.onClick()
-    }
-  }
-
   render() {
     return (
       <button
-        className={classNames('nextPlanet font', this.state.disabled && '--disabled')}
-        disabled={!!this.state.disabled}
-        onClick={this.onClick.bind(this)}
+        className={classNames('nextPlanet font', this.props.disabled && '--disabled')}
+        disabled={!!this.props.disabled}
+        onClick={this.props.onClick}
       >
-        { this.state.disabled
+        { this.props.disabled
           ? (<Loading/>)
           : this.props.children }
       </button>

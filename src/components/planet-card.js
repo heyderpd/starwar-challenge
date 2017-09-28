@@ -9,19 +9,24 @@ const PlanetCard = ({
   initializing,
   isLoading,
   getPlanet,
-  planets
+  selectedCard
 }) => {
 
   if (initializing) {
     return (<Loading big={true} />)
   }
+
+  if (!selectedCard) {
+    return (null)
+  }
+
   const {
     name,
     population,
     climate,
     terrain,
     filmsList
-  } = planets.selectedCard
+  } = selectedCard
 
   return (
     <div className="planetCard">
