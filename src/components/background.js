@@ -16,8 +16,8 @@ class Background extends Component {
     return (
       <div>
         <WindowResizeListener onResize={({windowHeight, windowWidth}) => skyGenerator(windowHeight, windowWidth)} />
-        <div id="warpSky" className={classNames(this.props.warp ? 'warp' : 'normal')}>
-        </div>
+        <div id="warpSky" className={classNames(this.props.warp ? 'warp' : 'normal')} />
+        <div id="lastSky" className='warp-fade' />
       </div>
     )
   }
