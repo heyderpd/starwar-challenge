@@ -1,5 +1,5 @@
 import { getPlanet } from './api'
-import { getIdFromUrl } from './utils'
+import { getIdFromUrl, formatFilms } from './utils'
 
 const randomizedIds = []
 
@@ -16,7 +16,7 @@ const randomId = limit => {
 
 const getPlanetId = ({ url }) => getIdFromUrl(url)
 
-const getFilmsList = ({ films }) => films.map(url => getIdFromUrl(url))
+const getFilmsList = ({ films }) => Array.isArray(films) ? formatFilms(films) : ''
 
 const formatPlanet = planet => ({
   [getPlanetId(planet)]: {

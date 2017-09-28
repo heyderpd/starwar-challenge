@@ -22,3 +22,13 @@ export const getIdFromUrl = url => {
 export const forceResizeEvent = () => {
   window.dispatchEvent(new Event('resize'))
 }
+
+const romanNumerals = ['', 'i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x']
+
+export const formatFilms = films => films
+  .map(getIdFromUrl)
+  .map(Number)
+  .sort()
+  .map(n => romanNumerals[Math.max(0, n)])
+  .filter(Boolean)
+  .join(', ')
