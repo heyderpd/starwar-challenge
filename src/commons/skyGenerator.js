@@ -65,7 +65,6 @@ const skyGenerator = (height, width, amount = 500) => {
   state.width = width
   switchSkys()
   const warpSky = document.getElementById('warpSky')
-  warpSky.innerHTML = ''
   warpSky.appendChild(createSvg())
 }
 
