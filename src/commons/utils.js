@@ -18,3 +18,7 @@ export const getIdFromUrl = url => {
   // eslint-enabled-next-line
   return id
 }
+
+export const forceResizeEvent = () => {
+  window.dispatchEvent(new Event('resize'))
+}
