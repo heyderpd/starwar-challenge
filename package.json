@@ -21,7 +21,8 @@
     "start-cra": "react-scripts start",
     "start": "npm-run-all -p watch-css start-cra",
     "docs": "rm -rf docs && mkdir docs && cp -a ./build/. ./docs/",
-    "build": "npm run build-css && react-scripts build && npm run docs",
+    "build-src": "npm run build-css && react-scripts build && npm run docs",
+    "build": "PUBLIC_URL=. npm run build-src",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
