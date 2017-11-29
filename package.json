@@ -20,7 +20,7 @@
     "watch-css": "npm run build-css && node-sass src/stylesheets -o src/stylesheets --watch --recursive",
     "start-cra": "react-scripts start",
     "start": "npm-run-all -p watch-css start-cra",
-    "docs": "cp -a ./build/. ./docs/",
+    "docs": "rm -rf docs && mkdir docs && cp -a ./build/. ./docs/",
     "build": "npm run build-css && react-scripts build && npm run docs",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
