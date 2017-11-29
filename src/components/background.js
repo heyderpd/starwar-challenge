@@ -3,34 +3,21 @@ import classNames from 'classnames'
 import { WindowResizeListener } from 'react-window-resize-listener'
 
 import skyGenerator from '../commons/skyGenerator'
+import { forceResizeEvent } from '../commons/utils'
 
 class Background extends Component {
-
-  state = {
-    warp: false
-  }
-
   componentWillReceiveProps (nextProps) {
-    if (nextProps.warp && !this.state.warp) {
-      this.setState({
-        warp: true
-      })
-      setTimeout(() => {
-        this.setState({ warp: false })
-      }, 1000)
+    if (!nextProps.warp) {
+      forceResizeEvent()
     }
-  }
-
-  updateDimensions() {
-    console.log('updateDimensions')
   }
 
   render() {
     return (
       <div>
         <WindowResizeListener onResize={({windowHeight, windowWidth}) => skyGenerator(windowHeight, windowWidth)} />
-        <div id="warpSky" className={classNames(this.state.warp ? 'warp' : 'normal')}>
-        </div>
+        <div id="warpSky" className={classNames(this.props.warp ? 'warp' : 'normal')} />
+        <div id="lastSky" className='warp-fade' />
       </div>
     )
   }

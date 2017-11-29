@@ -1,22 +1,22 @@
 import { getPlanet } from './api'
-import { getIdFromUrl } from './utils'
+import { getIdFromUrl, formatFilms } from './utils'
 
-let lastId = null
+const randomizedIds = []
 
 const randomValue = limit => Math.min(limit, Math.floor(Math.random() *limit +1))
 
 const randomId = limit => {
   let id = randomValue(limit)
-  if (lastId === id) {
+  if (randomizedIds.indexOf(id) >= 0) {
     id = randomValue(limit)
   }
-  lastId = id
+  randomizedIds.push(id)
   return id
 }
 
 const getPlanetId = ({ url }) => getIdFromUrl(url)
 
-const getFilmsList = ({ films }) => films.map(url => getIdFromUrl(url))
+const getFilmsList = ({ films }) => Array.isArray(films) ? formatFilms(films) : ''
 
 const formatPlanet = planet => ({
   [getPlanetId(planet)]: {
@@ -54,8 +54,7 @@ export const randomPlanet = async ({ count, list }) => {
   } else {
     const { response } = await getPlanet(id)
     return {
-      newPlanet: true,
-      id,
+      newPlanet: { id: response },
       selectedCard: response
     }
   }

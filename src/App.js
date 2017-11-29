@@ -12,10 +12,11 @@ class App extends Component {
     initializing: true,
     isLoading: false,
     hasError: false,
+    planets: {}
   }
 
   async componentDidMount () {
-    const { response, error } = await getPages()
+    const { response } = await getPages()
     if (response) {
       this.setState({ planets: setPlanets(response) })
     } else {
@@ -27,29 +28,38 @@ class App extends Component {
   async randomPlanet () {
     this.setState({ isLoading: true })
 
-    const { newPlanet, id, selectedCard } = await randomPlanet(this.state.planets)
+    const { newPlanet, selectedCard } = await randomPlanet(this.state.planets)
     const list = newPlanet
       ? {
           ...this.state.planets.list,
-          [id]: selectedCard
+          ...newPlanet
         }
       : this.state.planets.list
-
     this.setState({
       planets: {
         ...this.state.planets,
         list,
         selectedCard
-      },
-      isLoading: false,
+      }
     })
+
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      })
+    }, 700)
   }
 
   render() {
     return (
       <div className="App">
         <Background warp={this.state.isLoading} />
-        <PlanetCard {...this.state} getPlanet={this.randomPlanet.bind(this)} />
+        <PlanetCard
+          initializing={this.state.initializing}
+          isLoading={this.state.isLoading}
+          getPlanet={this.randomPlanet.bind(this)}
+          selectedCard={this.state.planets.selectedCard}
+        />
       </div>
     );
   }
